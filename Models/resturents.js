@@ -22,7 +22,12 @@ const Resturent = mongoose.model("resturent", resturentSchema)
 
 const getresturents = async function (search) {
     console.log(search)
-    const result = await Resturent.find().populate("categories")
+    const result = await Resturent.find().populate({
+    path : 'categories',
+    populate : {
+      path : 'category'
+    }
+  })
     return result
 }
 
