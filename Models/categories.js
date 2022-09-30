@@ -30,3 +30,4 @@ const createcategoriess = async function (body) {
 
 module.exports.createcategories = createcategoriess
 module.exports.getcategoriess = getcategoriess 
+module.exports.Categories = Categories

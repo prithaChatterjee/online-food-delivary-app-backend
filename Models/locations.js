@@ -28,3 +28,4 @@ const createlocations = async function (body) {
 
 module.exports.getLocation = getLocation 
 module.exports.createlocation = createlocations 
+module.exports.Locations = Locations
