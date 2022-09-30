@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-// import { Categories } from "./categories";
 
 const resturentSchema = new mongoose.Schema({
     name: {
@@ -9,35 +8,51 @@ const resturentSchema = new mongoose.Schema({
     },
     categories: {
         type: [new mongoose.Schema({
-            rating: {type: Number},
-            category: {type: mongoose.Schema.Types.ObjectId, 
+            rating: { type: Number },
+            category: {
+                type: mongoose.Schema.Types.ObjectId,
                 ref: "Categories"
             }
         })],
         minLength: 1,
+    },
+    location: {
+        type : new mongoose.Schema({
+            address: String,
+            city:
+         {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Locations"
+        }
+        })
     }
 });
 
-const Resturent = mongoose.model("resturent", resturentSchema)
+const Resturent = mongoose.model("Resturent", resturentSchema)
 
 const getresturents = async function (search) {
     console.log(search)
     const result = await Resturent.find().populate({
-    path : 'categories',
-    populate : {
-      path : 'category'
-    }
-  })
+        path: 'categories',
+        populate: {
+            path: 'category'
+        }
+    }).populate({
+        path: 'location',
+        populate: {
+            path: 'city'
+        }
+    })
     return result
 }
 
 const createresturents = async function (body) {
     try {
-        const resturent = new Resturent(body); 
+        const resturent = new Resturent(body);
         const response = await resturent.save()
-        return {code: 200, result: response}
+        return { code: 200, result: response }
     } catch (error) {
-        return {code: 400, result: error}
+        return { code: 400, result: error }
     }
 }
 

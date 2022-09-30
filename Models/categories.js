@@ -11,7 +11,7 @@ const categoriesSchema = new mongoose.Schema({
     }
 });
 
-const Categories = mongoose.model("categories", categoriesSchema)
+const Categories = mongoose.model("Categories", categoriesSchema)
 
 const getcategoriess = async function () {
     const result = await Categories.find()
