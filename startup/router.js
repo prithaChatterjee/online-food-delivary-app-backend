@@ -5,6 +5,8 @@ const user = require("../Routes/user")
 const location = require("../Routes/locations")
 const categories = require("../Routes/categories")
 const resturents = require("../Routes/resturents")
+const dishes = require("../Routes/dishes")
+
 
 module.exports = function name(app) {
     app.use(express.json())
@@ -13,5 +15,6 @@ module.exports = function name(app) {
     app.use(`/api/locations`, location)
     app.use(`/api/categories`, categories)
     app.use(`/api/resturents`, resturents)
+    app.use(`/api/dishes`, dishes)
     app.use(error)
 }
