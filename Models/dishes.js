@@ -8,7 +8,7 @@ const dishSchema = new mongoose.Schema({
     },
     description: String,
     price: {
-        type: String,
+        type: Number,
         required: true,
         unique: true
     },

@@ -6,7 +6,7 @@ const asyncMiddleware = require("../Middleware/asyncMiddleware")
 router.get('/:_id' , asyncMiddleware(async function (req, res) {
     // console.log(req.params)
     // console.log(req.query.search)
-    const result = await getcart({[req.query.search]: req.params._id})
+    const result = await getcart(req.params._id)
     res.status(200).send(result)
 }))
 
